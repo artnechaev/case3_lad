@@ -1,0 +1,22 @@
+{% extends 'shopapp/index.html' %}
+
+{% block content %}
+  {% if products.count > 0 %}
+  <h2>{{ title }}</h2>
+  <table>
+    <thead><th>id</th><th>Название</th><th>Описание</th><th>Цена, р.</th><th>Кол-во</th><th>Изменено</th>
+    <th>Отображается</th></thead>
+    {% for product in products %}
+    <tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.description }}</td>
+      <td>{{ product.price }}</td>
+      <td>{{ product.amount }}</td>
+      <td>{{ product.date_updated }}</td>
+      <td>{{ product.is_visible }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+{% endblock content %}

@@ -1,0 +1,25 @@
+{% extends 'shopapp/index.html' %}
+
+{% block content %}
+  {% if orders.count > 0 %}
+  <h2>{{ title }}</h2>
+  <table>
+    <thead><th>Название</th><th>Описание</th><th>Добавлен</th><th>Пользователь</th><th>Продукты</th>
+    {% for order in orders %}
+    <tr>
+      <td>{{ order.name }}</td>
+      <td>{{ order.description }}</td>
+      <td>{{ order.date_added }}</td>
+      <td>{{ order.buyer }}</td>
+      <td>
+        <ul>
+          {% for product in order.products.all %}
+          <li>{{ product }}</li>
+          {% endfor %}
+        </ul>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+{% endblock content %}
